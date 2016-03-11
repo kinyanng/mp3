@@ -1,1 +1,35 @@
 // Add any custom Sass & CSS here
+body {
+  background: #f1f1f1;
+
+  h1 {
+    color: #333333;
+    text-shadow: 1px 1px 3px grey;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-weight: bold;
+  }
+
+  .gallery-genre {
+    display: inline-block;
+    width: 120px;
+  }
+
+  .gallery-item {
+    margin: 10px;
+    width: 22%;
+    display: inline-block;
+
+    background: black;
+    box-shadow: 3px 3px 5px grey;
+  }
+
+  #details {
+    img {
+      width: 100%;
+      box-shadow: 3px 3px 5px grey;
+    }
+  }
+}

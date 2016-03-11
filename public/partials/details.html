@@ -1,0 +1,80 @@
+<div class="row text-center">
+    <div class="large-12 columns">
+        <h1>IMDb Top 250</h1>
+        <a href="#/">Search Movies</a>&nbsp;&nbsp;&nbsp;
+        <a href="#/gallery">View Gallery</a>
+        <br>
+        <br>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <h2>{{ movie.title }}</h2>
+
+        <p><strong>{{ movie.imdbRating }}</strong>/10 by <strong>{{ movie.imdbVotes }}</strong> votes</p>
+        <a ng-href="#/details?rank={{ movie.rank - 1 < 1 ? 250 : movie.rank - 1 }}">< Previous</a>&nbsp;&nbsp;&nbsp;
+        <a ng-href="#/details?rank={{ movie.rank + 1 > 250 ? 1 : movie.rank + 1 }}">Next ></a>
+        <br>
+        <br>
+    </div>
+</div>
+<div id="details" class="row">
+    <div class="medium-4 columns text-center">
+        <img ng-src="data/images/{{ movie.imdbID }}.jpg">
+    </div>
+    <div class="medium-8 columns">
+        <table>
+            <tr>
+                <td><span class="success label">Metascore</span> {{ movie.metascore }}</td>
+            </tr>
+            <tr>
+                <td><span class="success label">Rated</span> {{ movie.rated }}</td>
+            </tr>
+            <tr>
+                <td><span class="success label">Released</span> {{ movie.released }}</td>
+            </tr>
+            <tr>
+                <td><span class="success label">Runtime</span> {{ movie.runtime }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="success label">Genre</span>
+                    <span ng-repeat="genre in movie.genre">{{ genre }}<span ng-if="!$last">, </span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="success label">Director</span>
+                    <span ng-repeat="director in movie.director">{{ director }}<span ng-if="!$last">, </span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="success label">Actors</span>
+                    <span ng-repeat="actor in movie.actors">{{ actor }}<span ng-if="!$last">, </span></span>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="success label">Plot</span> {{ movie.plot }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="success label">Language</span>
+                    <span ng-repeat="language in movie.language">{{ language }}<span ng-if="!$last">, </span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="success label">Country</span>
+                    <span ng-repeat="country in movie.country">{{ country }}<span ng-if="!$last">, </span></span>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="success label">Awards</span> {{ movie.awards }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<br>

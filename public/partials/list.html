@@ -1,0 +1,46 @@
+<div class="row text-center">
+    <div class="large-12 columns">
+        <h1>IMDb Top 250</h1>
+        <a href="#/">Search Movies</a>&nbsp;&nbsp;&nbsp;
+        <a href="#/gallery">View Gallery</a>
+        <br>
+        <br>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <legend>Search Movies</legend>
+        <input type="text" placeholder="Please input the movie title" ng-model="keyword"/>
+    </div>
+</div>
+<div class="row">
+    <fieldset class="medium-6 columns">
+        <legend>Sort by</legend>
+        <input id="movie-rank" type="radio" value="rank" ng-model="predicate"><label
+            for="movie-rank">Rank</label>
+        <input id="movie-title" type="radio" value="title" ng-model="predicate"><label for="movie-title">Title</label>
+    </fieldset>
+    <fieldset class="medium-6 columns">
+        <legend>Ordering</legend>
+        <input id="order-asc" type="radio" value="asc" ng-model="order"><label for="order-asc">Ascending</label>
+        <input id="order-desc" type="radio" value="desc" ng-model="order"><label for="order-desc">Descending</label>
+    </fieldset>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <table class="hover">
+            <tr ng-repeat="movie in filtered = (movies | filter:{title: keyword} | orderBy:predicate:(order != 'asc'))">
+                <td><span class="success round label">{{ movie.rank }}</span>&nbsp;&nbsp;
+                    <a ng-href="#/details?rank={{ movie.rank }}">{{ movie.title }}</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row text-center">
+    <div class="large-12 columns">
+        <p>Showing {{ filtered.length }} movie(s).</p>
+    </div>
+</div>
+<br>
