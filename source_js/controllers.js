@@ -36,12 +36,20 @@ app
         ];
     }])
     .controller('listController', ['$rootScope', '$scope', function ($rootScope, $scope) {
-        $scope.movies = $rootScope.movies;
+        $scope.$watch(function () {
+            return $rootScope.movies;
+        }, function () {
+            $scope.movies = $rootScope.movies;
+        }, true);
         $scope.predicate = 'rank';
         $scope.order = 'asc';
     }])
     .controller('galleryController', ['$rootScope', '$scope', function ($rootScope, $scope) {
-        $scope.movies = $rootScope.movies;
+        $scope.$watch(function () {
+            return $rootScope.movies;
+        }, function () {
+            $scope.movies = $rootScope.movies;
+        }, true);
         $scope.genres = $rootScope.genres;
         $scope.selectedGenre = '';
         $scope.changeGenre = function (genre) {
